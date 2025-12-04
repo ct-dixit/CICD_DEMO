@@ -1,50 +1,48 @@
+import { fixupConfigRules } from '@eslint/compat';
 import prettier from 'eslint-plugin-prettier';
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import js from '@eslint/js';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
   allConfig: js.configs.all
 });
 
-const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier'),
-  {
-    ignores: ['**/node_modules/*', '**/.next/*']
-  },
+export default [
+  ...fixupConfigRules(compat.extends('prettier')),
+
   {
     plugins: {
       prettier,
-      '@typescript-eslint': typescriptEslint
+      react,
+      'react-hooks': reactHooks,
+      'jsx-a11y': jsxA11y
     },
-    languageOptions: {
-      parser: tsParser,
-      ecmaVersion: 5,
-      sourceType: 'module',
 
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
       parserOptions: {
-        project: './tsconfig.json',
-        createDefaultProgram: true
-      }
-    },
-    settings: {
-      'import/resolver': {
-        node: {
-          moduleDirectory: ['node_modules', 'src/']
-        },
-        typescript: {
-          alwaysTryTypes: true
+        ecmaFeatures: {
+          jsx: true
         }
       }
     },
+
+    settings: {
+      react: {
+        version: 'detect'
+      }
+    },
+
     rules: {
       'react/jsx-filename-extension': 'off',
       'no-param-reassign': 'off',
@@ -56,20 +54,15 @@ const eslintConfig = [
       'import/order': 'off',
       'no-console': 'off',
       'no-shadow': 'off',
-      '@typescript-eslint/naming-convention': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
       'import/no-cycle': 'off',
-      'prefer-destructuring': 'off',
       'import/no-extraneous-dependencies': 'off',
-      'react/display-name': 'off',
-      'import/no-unresolved': ['off', { caseSensitive: false }],
-
-      'import/no-unresolved': [
-        'off',
-        {
-          caseSensitive: false
-        }
-      ],
+      'jsx-a11y/label-has-associated-control': 'off',
+      'jsx-a11y/no-autofocus': 'off',
+      'react/jsx-uses-react': 'off',
+      'react/jsx-uses-vars': 'error',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
+      'no-unused-vars': 'off',
 
       'no-restricted-imports': [
         'error',
@@ -78,7 +71,7 @@ const eslintConfig = [
         }
       ],
 
-      '@typescript-eslint/no-unused-vars': [
+      'no-unused-vars': [
         'error',
         {
           vars: 'all',
@@ -86,9 +79,11 @@ const eslintConfig = [
         }
       ],
 
-      'prettier/prettier': 'warn'
+      'prettier/prettier': 'warn',
     }
+  },
+  {
+    ignores: ['node_modules/**'],
+    files: ['src/**/*.{js,jsx}']
   }
 ];
-
-export default eslintConfig;
