@@ -1,0 +1,198 @@
+@layer {
+  .fc td,
+  .fc th {
+    @apply !border-theme-border dark:!border-themedark-border border;
+  }
+
+  .fc .fc-toolbar {
+    @apply flex items-center justify-between max-sm:flex-col max-sm:gap-2;
+  }
+  .fc .fc-toolbar h2 {
+    @apply text-[16px] leading-[30px] uppercase;
+  }
+  .fc .fc-toolbar .fc-left,
+  .fc .fc-toolbar .fc-right,
+  .fc .fc-toolbar .fc-center {
+    @apply max-md:float-none max-md:mx-0 max-md:my-2.5 max-md:block max-md:text-center;
+  }
+  .fc .fc-toolbar > * > * {
+    @apply max-md:float-none;
+  }
+  .fc .fc-today-button {
+    @apply !bg-primary-500 border-primary-500 rounded-full text-white max-md:hidden;
+  }
+  .fc .fc-button {
+    @apply capitalize;
+  }
+  .fc .fc-daygrid-day-top {
+    @apply flex-col p-[14px];
+  }
+  .fc .fc-col-header-cell {
+    @apply border-0 bg-transparent;
+  }
+  .fc .fc-col-header-cell-cushion {
+    @apply block px-1 py-4;
+  }
+  .fc .fc-scrollgrid-section .fc-scroller-harness {
+    @apply p-0;
+  }
+  .fc .fc-daygrid-day-number {
+    @apply hover:bg-secondary-500 m-0.5 flex h-6 w-6 items-center justify-center rounded-lg p-0 text-sm hover:text-white;
+  }
+  .fc .fc-daygrid-day.fc-day-today {
+    @apply !bg-primary-500/10 bg-cover;
+  }
+  .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+    @apply !bg-primary-500 text-white;
+  }
+  .fc .fc-timegrid-col.fc-day-today {
+    @apply !bg-primary-500/10;
+  }
+  .fc .fc-col-header,
+  .fc .fc-daygrid-body,
+  .fc .fc-scrollgrid-sync-table {
+    @apply !w-full;
+  }
+  .fc .fc-scrollgrid-section-sticky > * {
+    @apply !bg-theme-cardbg dark:!bg-themedark-cardbg;
+  }
+  .fc .fc-scrollgrid-section > * {
+    @apply border-theme-border border-t border-l;
+  }
+  .fc .fc-scrollgrid-section-liquid > td {
+    @apply border-t-0;
+  }
+  .fc a[data-navlink] {
+    @apply no-underline hover:no-underline;
+  }
+  .fc-theme-bootstrap a:not([href]) {
+    @apply text-theme-bodycolor dark:text-themedark-bodycolor;
+  }
+  .fc-theme-standard .fc-scrollgrid {
+    @apply !border-theme-border dark:!border-themedark-border border-0;
+  }
+  .fc-theme-standard .fc-list {
+    @apply !border-theme-border dark:!border-themedark-border;
+  }
+  .fc-h-event .fc-event-main {
+    @apply !text-primary-500;
+  }
+  .fc-event-title,
+  .fc-sticky {
+    @apply truncate font-semibold;
+  }
+  .fc-daygrid-event-dot {
+    @apply hidden !border-white;
+  }
+  .fc-list-day-cushion {
+    @apply !bg-theme-cardbg dark:!bg-themedark-cardbg;
+  }
+  .fc .fc-list-event:hover td {
+    @apply !bg-theme-cardbg dark:!bg-themedark-cardbg;
+  }
+  .fc-event-time {
+    @apply hidden;
+  }
+  .fc-event,
+  .fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end.bg-dark .fc-content {
+    @apply text-white;
+  }
+  .fc-prev-button.fc-button,
+  .fc-next-button.fc-button {
+    @apply relative inline-block h-[34px] w-[34px] items-center justify-center !rounded !p-0 text-base;
+  }
+  .fc-toolbar-chunk {
+    @apply max-md:flex-col max-md:gap-4;
+  }
+  .fc-toolbar-chunk .d-inline-flex .fc-button {
+    @apply text-primary-500 !bg-primary-500/15 !rounded border-0 shadow-none;
+  }
+  .fc-toolbar-chunk .d-inline-flex .fc-button:not(:first-child) {
+    @apply !ml-[5px];
+  }
+  .fc-toolbar-chunk .d-inline-flex .fc-button:focus,
+  .fc-toolbar-chunk .d-inline-flex .fc-button:hover,
+  .fc-toolbar-chunk .d-inline-flex .fc-button.active {
+    @apply !bg-primary-500 !text-white;
+  }
+  .fc-toolbar-chunk .fc-button-primary {
+    @apply !bg-primary-500/10 !text-primary-500 !border-primary-500 p-[9px_16px] focus:shadow-none;
+  }
+  .fc-toolbar-chunk .fc-button-primary:focus,
+  .fc-toolbar-chunk .fc-button-primary:hover {
+    @apply !bg-primary-500 !text-white;
+  }
+  .fc-toolbar-chunk .fc-button-primary:not(:disabled).fc-button-active,
+  .fc-toolbar-chunk .fc-button-primary:not(:disabled):active {
+    @apply !bg-primary-500 !text-white focus:shadow-none;
+  }
+  .fc-toolbar-chunk .fc-today-button {
+    @apply !bg-primary-500 border-primary-500 !rounded !text-white;
+  }
+  .fc-daygrid-event-harness .fc-daygrid-event,
+  .fc-timegrid-event-harness .fc-daygrid-event {
+    @apply backdrop-blur-sm;
+  }
+  .fc-timegrid-slots table tr,
+  .fc-list-table {
+    @apply !border-theme-border dark:!border-themedark-border;
+  }
+  .fc-event {
+    @apply !bg-primary-500/10 text-primary-500 border-primary-500 m-[5px_7px] cursor-move rounded border p-[5px] text-center text-base;
+  }
+  .fc-event.event-primary {
+    @apply !bg-primary-500/10 text-primary-500 border-primary-500;
+  }
+  .fc-event.event-primary.fc-h-event .fc-event-main {
+    @apply text-primary-500;
+  }
+  .fc-event.event-secondary {
+    @apply !bg-secondary-500/10 !text-secondary-500 !border-secondary-500;
+  }
+  .fc-event.event-secondary.fc-h-event .fc-event-main {
+    @apply !text-secondary-500;
+  }
+  .fc-event.event-success {
+    @apply !bg-success-500/10 !text-success-500 !border-success-500;
+  }
+  .fc-event.event-success.fc-h-event .fc-event-main {
+    @apply !text-success-500;
+  }
+  .fc-event.event-danger {
+    @apply !bg-danger-500/10 !text-danger-500 !border-danger-500;
+  }
+  .fc-event.event-danger.fc-h-event .fc-event-main {
+    @apply !text-danger-500;
+  }
+  .fc-event.event-warning {
+    @apply !bg-warning-500/10 !text-warning-500 !border-warning-500;
+  }
+  .fc-event.event-warning.fc-h-event .fc-event-main {
+    @apply !text-warning-500;
+  }
+  .fc-event.event-info {
+    @apply !bg-info-500/10 !text-info-500 !border-info-500;
+  }
+  .fc-event.event-info.fc-h-event .fc-event-main {
+    @apply !text-info-500;
+  }
+  .fc-daygrid-event-harness .fc-daygrid-event.bg-soft-dark .fc-event-main,
+  .fc-daygrid-event-harness .fc-daygrid-event.bg-soft-dark .fc-event-title {
+    @apply !text-dark-500;
+  }
+  .fc-v-event .fc-event-main {
+    @apply text-inherit;
+  }
+  .simplebar-scrollbar {
+    @apply absolute w-1.5 before:absolute before:right-0 before:left-0 before:rounded-md before:bg-slate-500 before:opacity-0 ltr:right-px rtl:left-px;
+    min-height: 10px;
+  }
+  .simplebar-scrollbar:before {
+    content: ' ';
+    transition: opacity 0.2s linear;
+  }
+  .simplebar-scrollbar.simplebar-visible:before {
+    opacity: theme('opacity.50');
+    transition: opacity 0s linear;
+  }
+}

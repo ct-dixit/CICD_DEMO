@@ -1,0 +1,42 @@
+name: npm Build
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [master*]
+
+jobs:
+  SFTP-deploy:
+    name: 🪛 Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: 🔨 Build Full Version - npm
+        run: |
+          cd full-version
+          npm i
+          npm run build
+
+      - name: Create ZIP
+        run: |
+          zip -r build.zip . \
+            -x "*.lintstagedrc/*" \
+            -x "node_modules/*" \
+            -x "package.json/*" \
+            -x ".husky/*" \
+            -x ".gitignore/*" \
+
+      - name: Upload ZIP Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-zip
+          path: build.zip

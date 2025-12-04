@@ -1,0 +1,66 @@
+@layer {
+  .offcanvas {
+    @apply bg-theme-cardbg dark:bg-themedark-cardbg invisible fixed z-[1028] flex-col shadow-[0_0_15px_-3px_rgb(0,0,0,0.1)] transition-all duration-500 ease-in-out;
+  }
+
+  .offcanvas:not(.show) {
+    @apply z-[1];
+  }
+
+  .offcanvas-header {
+    @apply flex items-center justify-between p-5;
+  }
+
+  .offcanvas-body {
+    @apply grow overflow-y-auto p-5;
+  }
+
+  .offcanvas-body::-webkit-scrollbar {
+    @apply w-1.5 opacity-0 hover:opacity-100;
+  }
+
+  .offcanvas-body::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .offcanvas-body::-webkit-scrollbar-thumb {
+    @apply bg-secondary-100 hover:bg-secondary-200;
+  }
+
+  .offcanvas.offcanvas-start {
+    @apply inset-y-0 left-[-360px] w-[360px] max-w-full;
+  }
+
+  .offcanvas.offcanvas-start.show {
+    @apply left-0;
+  }
+
+  .offcanvas.offcanvas-top {
+    @apply inset-x-0 top-[-320px] h-[320px];
+  }
+
+  .offcanvas.offcanvas-top.show {
+    @apply top-0;
+  }
+
+  .offcanvas.offcanvas-end {
+    @apply inset-y-0 right-[-360px] w-[360px] max-w-full;
+  }
+
+  .offcanvas.offcanvas-end.show {
+    @apply right-0;
+  }
+
+  .offcanvas.offcanvas-bottom {
+    @apply inset-x-0 bottom-[-320px] h-[320px];
+  }
+
+  .offcanvas.offcanvas-bottom.show {
+    @apply bottom-0;
+  }
+  .offcanvas.offcanvas-end.show:not([data-pc-toggle='collapse']),
+  .offcanvas.offcanvas-start.show:not([data-pc-toggle='collapse']),
+  .offcanvas.show {
+    @apply visible !flex;
+  }
+}
