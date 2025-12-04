@@ -1,10 +1,8 @@
 name: npm Build
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [master*]
+    branches: ["master"]
 
 jobs:
   SFTP-deploy:
@@ -29,11 +27,17 @@ jobs:
       - name: Create ZIP
         run: |
           zip -r build.zip . \
-            -x "*.lintstagedrc/*" \
-            -x "node_modules/*" \
-            -x "package.json/*" \
+            -x ".git/*" \
+            -x ".github/*" \
             -x ".husky/*" \
-            -x ".gitignore/*" \
+            -x ".gitignore" \
+            -x ".lintstagedrc" \
+            -x "package.json" \
+            -x "package-lock.json" \
+            -x "yarn.lock" \
+            -x "node_modules/*" \
+            -x "full-version/node_modules/*" \
+            -x "full-version/dist/*"
 
       - name: Upload ZIP Artifact
         uses: actions/upload-artifact@v4
